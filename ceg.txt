@@ -1,0 +1,52 @@
+Causes:
+1: spracovanie (normálneho) požiadavku
+2: vyzdvihnutie materiálu bez vlastnosti
+3: vyzdvihnutie materiálu s prioritnou vlastnosťou
+4: čas menší ako 1 minúta pri spracovaní (normálneho) požiadavku
+5: čas menší ako 1 minúta pri spracovaní prioritnom požiadavku
+6: čas väčší ako 1 minúta pri spracovaní (normálneho) požiadavku
+7: čas väčší ako 1 minúta pri spracovaní prioritnom požiadavku
+8: vytvorenie prioritnej požiadavky
+9: všetky sloty obsadene alebo prekročenie maximálnej váhy
+10: vozík je v režime iba_výklad
+11: vozík má voľný aspon jeden slot a po naložení materiálu nebude prekročená maximálna váha
+12: vozík ma naložený materiál s prioritnou vlastnosťou
+
+Effects:
+70: vyzdvihnutie (normálneho) materiálu
+71: vytvorenie prioritného požiadavku
+72: pridelenie materiálu prioritná vlastnosť
+73: vyzdvihnutie prioritného materiálu
+74: prepnutie do režimu iba_výklad
+75: vozík nenakladá material
+76: zotrvanie v režime iba_výklad
+77: prepnutie do režimu Neskoro
+78: možnosť  nakladanie a vykladania materiálov v iných staniciach
+
+Rules:
+70 = 2 && 11
+71 = 6
+72 = 6
+73 = 8 && 6 && 11
+74 = 5
+75 = 10 && 9
+76 = 10 && 12
+77 = 7
+78 = 11
+
+Constraints:
+6-> 4
+7 -> 5
+5 -> 6
+2 -> 4
+8 -> 6
+4 -> 1
+6 -> 8
+1 -> 4
+8 -> 5
+10 -> 3
+3 -> 10
+12 -> 3
+3 -> 12
+E: 2, 6
+E: 3, 7
