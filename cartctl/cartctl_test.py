@@ -5,7 +5,7 @@ Example of usage/test of Cart controller implementation.
 
 import sys
 from cartctl import CartCtl
-from cart import Cart, CargoReq
+from cart import Cart, CargoReq, Status
 from jarvisenv import Jarvis
 import unittest
 
@@ -101,6 +101,34 @@ class TestCartRequests(unittest.TestCase):
         self.assertEqual('unloaded', braceletR.context)
         self.assertEqual('unloaded', braceletL.context)
         #self.assertEqual(cart_dev.pos, 'C')
+
+
+    # CEG - 1. Test
+    def testWithoutRequest(self):
+        "TestWithoutRequest"
+        def on_move(c: Cart):
+            log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
+            self.fail("Error: cart can not move anywhere.")
+        
+        # Setup cart
+        # 4 slots, 150 kg max payload capacity, 2=max debug
+        cart_dev = Cart(4, 150, 0)
+        cart_dev.onmove = on_move
+
+        # Setup Cart Controller
+        c = CartCtl(cart_dev, Jarvis)
+        
+        # Setup Plan
+        Jarvis.reset_scheduler()
+        # Exercise + Verify indirect output
+        #   Here, we run the plan.
+        Jarvis.run()
+
+        # Verify direct output 
+        self.assertTrue(cart_dev.empty())
+        self.assertEqual(Status.Idle, cart_dev.status)
+        self.assertEqual([None, None, None, None], cart_dev.slots)
+        self.assertEqual('A', cart_dev.pos)
 
 if __name__ == "__main__":
     unittest.main()
