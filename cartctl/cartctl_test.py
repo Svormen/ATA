@@ -4,7 +4,7 @@ Example of usage/test of Cart controller implementation.
 """
 
 import sys
-from cartctl import CartCtl
+from cartctl import CartCtl, Status as StatusC
 from cart import Cart, CargoReq, Status
 from jarvisenv import Jarvis
 import unittest
@@ -105,7 +105,7 @@ class TestCartRequests(unittest.TestCase):
 
     # CEG - 1. Test
     def testWithoutRequest(self):
-        "TestWithoutRequest"
+        "testWithoutRequest"
         def on_move(c: Cart):
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
             self.fail("Error: cart can not move anywhere.")
@@ -129,6 +129,73 @@ class TestCartRequests(unittest.TestCase):
         self.assertEqual(Status.Idle, cart_dev.status)
         self.assertEqual([None, None, None, None], cart_dev.slots)
         self.assertEqual('A', cart_dev.pos)
+
+    # CEG - 2. Test
+    def testWithNormalRequest(self):
+        "testWithNormalRequest"
+
+        def add_load(c: CartCtl, cargo_req: CargoReq):
+            "callback for schedulled load"
+            log('%d: Requesting %s at %s' % \
+                (Jarvis.time(), cargo_req, cargo_req.src))
+            c.request(cargo_req)
+
+        def on_move(c: Cart):
+            "example callback (for assert)"
+            # put some asserts here
+            log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
+
+        def on_load(c: Cart, cargo_req: CargoReq):
+            "example callback for logging"
+            self.assertEqual('A', cart_dev.pos)
+            self.assertEqual('helmet', cargo_req.content)
+            self.assertIn(cargo_req, cart_dev.slots)
+            self.assertLess(Jarvis.time(), cargo_req.born + 60)
+            self.assertTrue(cargo_req.onload)
+            self.assertFalse(cargo_req.prio)
+            log('%d: Cart at %s: loading: %s' % (Jarvis.time(), c.pos, cargo_req))
+            log(c)
+            cargo_req.context = "loaded"
+
+        def on_unload(c: Cart, cargo_req: CargoReq):
+            "example callback (for assert)"
+            # put some asserts here
+            self.assertEqual('loaded', cargo_req.context)
+            self.assertEqual('B', c.pos)
+            self.assertEqual('helmet', cargo_req.content)
+            self.assertNotIn(cargo_req, cart_dev.slots)
+            self.assertTrue(cargo_req.onunload)
+            log('%d: Cart at %s: unloading: %s' % (Jarvis.time(), c.pos, cargo_req))
+            log(c)
+            cargo_req.context = 'unloaded'
+            
+        # Setup Cart
+        # 2 slots, 150 kg max payload capacity, 2=max debug
+        cart_dev = Cart(2, 150, 0)
+        cart_dev.onmove = on_move
+
+        # Setup Cart Controller
+        c = CartCtl(cart_dev, Jarvis)
+
+        # Setup Cargo to move
+        helmet = CargoReq('A', 'B', 120, 'helmet')
+        helmet.onload = on_load
+        helmet.onunload = on_unload
+
+        # Setup Plan
+        Jarvis.reset_scheduler()
+        #         when  event     called_with_params
+        Jarvis.plan(10, add_load, (c,helmet))
+        
+        # Exercise + Verify indirect output
+        #   Here, we run the plan.
+        Jarvis.run()
+
+        # Verify direct output
+        log(cart_dev)
+        self.assertTrue(cart_dev.empty())
+        self.assertEqual(Status.Idle, cart_dev.status)
+        self.assertEqual('B', cart_dev.pos)
 
 if __name__ == "__main__":
     unittest.main()
