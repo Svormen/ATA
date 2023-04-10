@@ -35,7 +35,9 @@ V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupný
 | `CapacityOfCart`   | kapacita vozíka  |
 | `SlotsOfCart` | počet slotov vozíka |
 | `LengthOfTrack ` | dĺžka trasy |
-| `CapacityFull ` | kapacita vozíka |
+| `CapacityCartFull ` | kapacita vozíka |
+| `SlotsCartFull ` | sloty vozíka |
+| `PrioritySet ` | nastavenie priority |
 <hr>
 
 <h2>Identifikácia charakteristiky parametrov + definícia ich blokov:</h2>
@@ -78,6 +80,9 @@ V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupný
 | 1  | `PrioritySet = true`  |
 | 2  | `PrioritySet = false`  |
 
+<hr>
+<h2>SUT constraints - podmienky ovplyvňujúce výslednú tabuľku</h2>
+
 | **SUT constraints**  | podmienky  |
 | :---: | :---: |
 | 1  | `CapacityOfCart.1 -> !SlotsOfCart.1`  |
@@ -89,3 +94,18 @@ V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupný
 | 7  | `!PrioritySet.1 -> LengthOfTrack.1`  |
 | 8  | `PrioritySet.1 -> CapacityCartFull.1 or SlotsCartFull.1`  |
 | 9  | `CountOfRequest.1 -> SlotsCartFull.2`  |
+
+<hr>
+<h2>Tabuľka kombinácie dvojíc charakteristiky</h2>
+
+| **Test Case ID**  | `CapacityOfCart` | `SlotsOfCart` | `LengthOfTrack` | `CountOfRequest` | `CapacityCartFull` | `SlotsCartFull` | `PrioritySet` |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **1** | 1 | 2 | 1 | 1 | 1 | 2 | 2 |
+| **2** | 1 | 3 | 2 | 2 | 2 | 1 | 1 |
+| **3** | 2 | 1 | 1 | 2 | 1 | 1 | 2 |
+| **4** | 2 | 2 | 2 | 1 | 1 | 2 | 1 |
+| **5** | 2 | 3 | 1 | 1 | 2 | 2 | 2 |
+| **6** | 3 | 1 | 2 | 1 | 1 | 2 | 1 |
+| **7** | 3 | 2 | 1 | 2 | 2 | 1 | 2 |
+| **8** | 2 | 1 | 1 | 2 | 2 | 1 | 2 |
+| **9** | 1 | 3 | 1 | 2 | 1 | 2 | 2 |
