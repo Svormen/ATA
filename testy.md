@@ -24,7 +24,7 @@ V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupný
 | 74  | prepnutie do režimu iba_výklad  | false | false | true | true |
 | 75  | vozík nenakladá material  | false | false | true | false |
 | 76  | zotrvanie v režime iba_výklad  | false | false | true | false |
-| 77  | prepnutie do režimu Neskoro  | false | false | false | true |
+| 77  | prepnutie do výnimky  | false | false | false | true |
 
 <hr>
 <h2>Identifikácia vstupných parametrov testu:</h2>
