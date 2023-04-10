@@ -42,7 +42,7 @@ V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupný
 
 | **CountOfRequest**  | počet požiadavkov  |
 | :---: | :---: |
-| 1  | `CountOfReques = 1`  |
+| 1  | `CountOfRequest = 1`  |
 | 2  | `CountOfRequest > 1`  |
 
  **CapacityOfCart**  | kapacita vozíka  |
@@ -55,21 +55,37 @@ V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupný
 | :---: | :---: |
 | 1  | `SlotsOfCart = 1`  |
 | 2  | `SlotsOfCart = 2`  |
-| 3  | `SlotsOfCart = 3`  |
-| 4  | `SlotsOfCart = 4`  |
+| 3  | `SlotsOfCart = 3 or SlotsOfCart = 4`  |
 
  **LengthOfTrack**  | dĺžka trasy  |
 | :---: | :---: |
-| 1  | `LengthOfTrack = 0`  |
-| 2  | `LengthOfTrack = 1`  |
-| 3  | `LengthOfTrack > 1`  |
+| 1  | `LengthOfTrack < 60`  |
+| 2  | `LengthOfTrack > 60 and LengthOfTrack < 120`  |
+| 3  | `LengthOfTrack > 120`  |
 
-| **CapacityFull**  | kapacita vozíka  |
+| **CapacityCartFull**  | kapacita vozíka  |
 | :---: | :---: |
-| 1  | `CapacityFull = true`  |
-| 2  | `CapacityFull = false`  |
+| 1  | `CapacityCartFull = true`  |
+| 2  | `CapacityCartFull = false`  |
+
+| **SlotsCartFull**  | sloty vozíka  |
+| :---: | :---: |
+| 1  | `SlotsCartFull = true`  |
+| 2  | `SlotsCartFull = false`  |
+
+| **PrioritySet**  | nastavenie priority |
+| :---: | :---: |
+| 1  | `PrioritySet = true`  |
+| 2  | `PrioritySet = false`  |
 
 | **SUT constraints**  | podmienky  |
 | :---: | :---: |
 | 1  | `CapacityOfCart.1 -> !SlotsOfCart.1`  |
-| 2  | `CapacityOfCart.3 -> !SlotsOfCart.3 and !SlotsOfCart.4`  |
+| 2  | `CapacityOfCart.3 -> SlotsOfCart.1 or SlotsOfCart.2`  |
+| 3  | `PrioritySet.1 -> !LengthOfTrack.1`  |
+| 4  | `CountOfRequest.2 and SlotsOfCart.1 -> SlotsCartFull.1`  |
+| 5  | `!SlotsOfCart.1 and CountOfRequest.1 -> SlotsCartFull.2`  |
+| 6  | `PrioritySet.1 -> LengthOfTrack.2`  |
+| 7  | `!PrioritySet.1 -> LengthOfTrack.1`  |
+| 8  | `PrioritySet.1 -> CapacityCartFull.1 or SlotsCartFull.1`  |
+| 9  | `CountOfRequest.1 -> SlotsCartFull.2`  |
