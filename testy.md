@@ -110,3 +110,30 @@ Na identifikáciu bola použitá stranka https://combine.testos.org na ktorej bo
 | **7** | 3 | 2 | 1 | 2 | 2 | 1 | 2 |
 | **8** | 2 | 1 | 1 | 2 | 2 | 1 | 2 |
 | **9** | 1 | 3 | 1 | 2 | 1 | 2 | 2 |
+
+<hr>
+<h2>Popis testov:</h2>
+Všetky testy sa nachádzajú v súbore: cartctl_test.py.
+
+<h3>Popis k testom k tabuľky k CEG grafom:</h3>
+
+| **Testy**  | **názov metódy**  | **popis** |
+| :---: | :---: | :---: |
+| 1  | `testWithoutRequest`  | test bez požiadavku |
+| 2  | `testWithNormalRequest`  | test na (normálny) požiadavok |
+| 3  | `testWithPriorityRequest`  | test na prioritný požiadavok |
+| 4  | `testOnCapacity`  | test na maximálnu kapacitu |
+
+<h3>Popis k testom k tabuľke kombinácie dvojíc charakteristiky:</h3>
+
+| **Testy**  | **názov metódy**  |
+| :---: | :---: |
+| 1  | `test1`  |
+| 2  | `test2`  |
+| 3  | `test3`  |
+| 4  | `test4`  |
+| 5  | `test5`  |
+| 6  | `test6`  |
+| 7  | `test7`  |
+| 8  | `test8`  |
+| 9  | `test9`  |
