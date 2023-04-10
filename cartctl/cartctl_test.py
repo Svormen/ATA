@@ -452,7 +452,6 @@ class TestCartRequests(unittest.TestCase):
         Jarvis.plan(26, add_load, (c,braceletL))
         
         # Exercise + Verify indirect output
-        #   SUT is the Cart.
         #   Here, we run the plan.
         Jarvis.run()
 
