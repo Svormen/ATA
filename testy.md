@@ -1,7 +1,7 @@
 <h1>Dokumentácia testov</h1>
-V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupných parametrov testu a identifikácia charakteristiky parametrov + definícia ich blokov.
+V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupných parametrov testu, identifikácia charakteristiky parametrov + definícia ich blokov, podmienky ovplyvňujúce výslednú tabuľku a tabuľka kombinácie dvojíc charakteristiky. Na prácu s CEG grafom bola použitá stránka http://ceg.testos.org/#.
 
-<h2>Popis tabuľky CEG grafu</h2>
+<h2>Popis tabuľky CEG grafu:</h2>
 
 | **Názov**  | **Popis** | **[1]** | **[2]** | **[3]** | **[4]** | 
 | :---: | :--- | :---: | :---: | :---: | :---: |
@@ -28,6 +28,7 @@ V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupný
 
 <hr>
 <h2>Identifikácia vstupných parametrov testu:</h2>
+Na identifikáciu bola použitá stranka https://combine.testos.org na ktorej boli taktiež definované podmienky ovplyvňujúce vygenerovanú tabuľku kombinácie dvojíc.
 
 | **Názov**  | **Popis**|
 | :---: | :---: |
@@ -81,7 +82,7 @@ V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupný
 | 2  | `PrioritySet = false`  |
 
 <hr>
-<h2>SUT constraints - podmienky ovplyvňujúce výslednú tabuľku</h2>
+<h2>SUT constraints - podmienky ovplyvňujúce výslednú tabuľku:</h2>
 
 | **SUT constraints**  | podmienky  |
 | :---: | :---: |
@@ -96,7 +97,7 @@ V tomto dokumente sa nachádza popis tabuľky CEF grafu, identifikácia vstupný
 | 9  | `CountOfRequest.1 -> SlotsCartFull.2`  |
 
 <hr>
-<h2>Tabuľka kombinácie dvojíc charakteristiky</h2>
+<h2>Tabuľka kombinácie dvojíc charakteristiky:</h2>
 
 | **Test Case ID**  | `CapacityOfCart` | `SlotsOfCart` | `LengthOfTrack` | `CountOfRequest` | `CapacityCartFull` | `SlotsCartFull` | `PrioritySet` |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
