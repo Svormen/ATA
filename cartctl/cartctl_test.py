@@ -382,7 +382,6 @@ class TestCartRequests(unittest.TestCase):
         Jarvis.plan(0, add_load, (c,helmet))
         
         # Exercise + Verify indirect output
-        #   SUT is the Cart.
         #   Here, we run the plan.
         Jarvis.run()
 
@@ -513,7 +512,6 @@ class TestCartRequests(unittest.TestCase):
         Jarvis.plan(20, add_load, (c,heart))
         
         # Exercise + Verify indirect output
-        #   SUT is the Cart.
         #   Here, we run the plan.
         Jarvis.run()
 
@@ -649,7 +647,6 @@ class TestCartRequests(unittest.TestCase):
         Jarvis.plan(10, add_load, (c,helmet))
         
         # Exercise + Verify indirect output
-        #   SUT is the Cart.
         #   Here, we run the plan.
         Jarvis.run()
 
@@ -839,7 +836,6 @@ class TestCartRequests(unittest.TestCase):
         Jarvis.plan(0, add_load, (c,helmet))
         
         # Exercise + Verify indirect output
-        #   SUT is the Cart.
         #   Here, we run the plan.
         Jarvis.run()
 
