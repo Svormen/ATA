@@ -33,11 +33,11 @@ Na identifikáciu bola použitá stranka https://combine.testos.org na ktorej bo
 | **Názov**  | **Popis**|
 | :---: | :---: |
 | `CountOfRequest`  | počet požiadavkov  |
-| `CapacityOfCart`   | kapacita vozíka  |
+| `CapacityOfCart`   | kapacita vozíka (maximálna váha)  |
 | `SlotsOfCart` | počet slotov vozíka |
-| `LengthOfTrack ` | dĺžka trasy |
-| `CapacityCartFull ` | kapacita vozíka |
-| `SlotsCartFull ` | sloty vozíka |
+| `LengthOfTrack ` | čas trasy |
+| `CapacityCartFull ` | kapacita vozíka je plná |
+| `SlotsCartFull ` | sloty vozíka sú obsadené |
 | `PrioritySet ` | nastavenie priority |
 <hr>
 
