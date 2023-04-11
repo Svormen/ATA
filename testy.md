@@ -125,15 +125,16 @@ Všetky testy sa nachádzajú v súbore: cartctl_test.py.
 | 4  | `testOnCapacity`  | test na maximálnu kapacitu |
 
 <h3>Popis k testom k tabuľke kombinácie dvojíc charakteristiky:</h3>
+Testy 4 a 6 boli spojené do jedného testu a to z dôvodu veľmi malého počtu odlišností medzi sebou.
 
 | **Testy**  | **názov metódy**  |
 | :---: | :---: |
 | 1  | `test1`  |
 | 2  | `test2`  |
 | 3  | `test3`  |
-| 4  | `test4`  |
+| 4  | `test4_6`  |
 | 5  | `test5`  |
-| 6  | `test6`  |
+| 6  | `test4_6`  |
 | 7  | `test7`  |
 | 8  | `test8`  |
 | 9  | `test9`  |
