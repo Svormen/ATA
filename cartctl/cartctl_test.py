@@ -144,7 +144,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
         def on_load(c: Cart, cargo_req: CargoReq):
@@ -161,7 +160,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
             self.assertEqual('loaded', cargo_req.context)
             self.assertEqual('B', c.pos)
             self.assertEqual('helmet', cargo_req.content)
@@ -210,7 +208,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
         def on_load(c: Cart, cargo_req: CargoReq):
@@ -226,8 +223,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
-            #self.assertNotIn(cargo_req, c.slots)
             if cargo_req.content == 'helmet':
                 self.assertEqual('B', c.pos)
                 self.assertEqual('helmet', cargo_req.content)
@@ -285,20 +280,17 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             self.assertEqual(c.load_capacity, 150)
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
         def on_load(c: Cart, cargo_req: CargoReq):
             "example callback for logging"
-
             log('%d: Cart at %s: loading: %s' % (Jarvis.time(), c.pos, cargo_req))
             log(c)
             cargo_req.context = "loaded"
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart at %s: unloading: %s' % (Jarvis.time(), c.pos, cargo_req))
             log(c)
 
@@ -353,16 +345,15 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
         def on_load(c: Cart, cargo_req: CargoReq):
+            self.assertFalse(cargo_req.prio)
             "example callback for logging"
             self.fail("Error: cart shoul not load stuff.")
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
             self.fail("Error: cart shoul not unload stuff.")
         
         # Setup Cart
@@ -402,7 +393,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             self.assertEqual(c.load_capacity, 50)
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
@@ -414,7 +404,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart at %s: unloading: %s' % (Jarvis.time(), c.pos, cargo_req))
             log(c)
             self.assertEqual('loaded', cargo_req.context)
@@ -436,11 +425,11 @@ class TestCartRequests(unittest.TestCase):
         heart.onload = on_load
         heart.onunload = on_unload
 
-        braceletR = CargoReq('C', 'B', 30, 'braceletR')
+        braceletR = CargoReq('C', 'B', 40, 'braceletR')
         braceletR.onload = on_load
         braceletR.onunload = on_unload
 
-        braceletL = CargoReq('C', 'B', 20, 'braceletL')
+        braceletL = CargoReq('C', 'B', 10, 'braceletL')
         braceletL.onload = on_load
         braceletL.onunload = on_unload
 
@@ -469,7 +458,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
         def on_load(c: Cart, cargo_req: CargoReq):
@@ -484,7 +472,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart at %s: unloading: %s' % (Jarvis.time(), c.pos, cargo_req))
             log(c)
             self.assertEqual('loaded', cargo_req.context)
@@ -531,7 +518,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
         def on_load(c: Cart, cargo_req: CargoReq):
@@ -548,8 +534,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
-            #self.assertNotIn(cargo_req, c.slots)
             if cargo_req.content == 'helmet':
                 self.assertEqual('helmet', cargo_req.content)
                 self.assertEqual('B', c.pos)
@@ -605,11 +589,11 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
         def on_load(c: Cart, cargo_req: CargoReq):
             "example callback for logging"
+            self.assertFalse(cargo_req.prio)
             if (cargo_req.content == 'helmet'):
                 self.assertEqual('A', cart_dev.pos)
                 self.assertEqual('helmet', cargo_req.content)
@@ -623,7 +607,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart at %s: unloading: %s' % (Jarvis.time(), c.pos, cargo_req))
             log(c)
             self.assertEqual('loaded', cargo_req.context)
@@ -667,7 +650,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             self.assertEqual(c.load_capacity, 500)
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
@@ -680,7 +662,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart at %s: unloading: %s' % (Jarvis.time(), c.pos, cargo_req))
             log(c)
 
@@ -734,20 +715,17 @@ class TestCartRequests(unittest.TestCase):
 
         def on_move(c: Cart):
             "example callback (for assert)"
-            # put some asserts here
             self.assertEqual(c.load_capacity, 150)
             log('%d: Cart is moving %s->%s' % (Jarvis.time(), c.pos, c.data))
 
         def on_load(c: Cart, cargo_req: CargoReq):
             "example callback for logging"
-
             log('%d: Cart at %s: loading: %s' % (Jarvis.time(), c.pos, cargo_req))
             log(c)
             cargo_req.context = "loaded"
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
             log('%d: Cart at %s: unloading: %s' % (Jarvis.time(), c.pos, cargo_req))
             log(c)
 
@@ -768,11 +746,11 @@ class TestCartRequests(unittest.TestCase):
         heart.onload = on_load
         heart.onunload = on_unload
 
-        braceletR = CargoReq('C', 'B', 90, 'braceletR')
+        braceletR = CargoReq('C', 'B', 100, 'braceletR')
         braceletR.onload = on_load
         braceletR.onunload = on_unload
 
-        braceletL = CargoReq('C', 'B', 60, 'braceletL')
+        braceletL = CargoReq('C', 'B', 50, 'braceletL')
         braceletL.onload = on_load
         braceletL.onunload = on_unload
 
@@ -782,7 +760,7 @@ class TestCartRequests(unittest.TestCase):
         Jarvis.plan(10, add_load, (c,helmet))
         Jarvis.plan(15, add_load, (c,heart))
         Jarvis.plan(55, add_load, (c,braceletR))
-        Jarvis.plan(30, add_load, (c,braceletL))
+        Jarvis.plan(25, add_load, (c,braceletL))
         
         # Exercise + Verify indirect output
         #   Here, we run the plan.
@@ -812,7 +790,6 @@ class TestCartRequests(unittest.TestCase):
 
         def on_unload(c: Cart, cargo_req: CargoReq):
             "example callback (for assert)"
-            # put some asserts here
             self.fail("Error: cart shoul not unload stuff.")
         
         # Setup Cart
