@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-Example of usage/test of Cart controller implementation.
+Author: Slavomir Svorada
+Subject: ATA - 1. projektu LS 2022/23
+Date: 11.4.2023
 """
 
 import sys
