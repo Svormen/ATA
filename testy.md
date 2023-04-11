@@ -42,6 +42,7 @@ Na identifikáciu bola použitá stranka https://combine.testos.org na ktorej bo
 <hr>
 
 <h2>Identifikácia charakteristiky parametrov + definícia ich blokov:</h2>
+Jednotlivé tabuľky znázorňujú parametre a definíciu hodnôt, ktoré môžu nadobúdať.
 
 | **CountOfRequest**  | počet požiadavkov  |
 | :---: | :---: |
@@ -83,6 +84,7 @@ Na identifikáciu bola použitá stranka https://combine.testos.org na ktorej bo
 
 <hr>
 <h2>SUT constraints - podmienky ovplyvňujúce výslednú tabuľku:</h2>
+V tabuľke sú znázornené podmienky, ktoré boli použité pri tvorbe tabuľky kombinácie dvojíc.
 
 | **SUT constraints**  | podmienky  |
 | :---: | :---: |
@@ -98,6 +100,7 @@ Na identifikáciu bola použitá stranka https://combine.testos.org na ktorej bo
 
 <hr>
 <h2>Tabuľka kombinácie dvojíc charakteristiky:</h2>
+Vygenerovaná tabuľka na základe constraints.
 
 | **Test Case ID**  | `CapacityOfCart` | `SlotsOfCart` | `LengthOfTrack` | `CountOfRequest` | `CapacityCartFull` | `SlotsCartFull` | `PrioritySet` |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -116,6 +119,7 @@ Na identifikáciu bola použitá stranka https://combine.testos.org na ktorej bo
 Všetky testy sa nachádzajú v súbore: cartctl_test.py.
 
 <h3>Popis k testom k tabuľky k CEG grafom:</h3>
+V tabuľke sa nachádzajú názvy testov a krátky popis testu.
 
 | **Testy**  | **názov metódy**  | **popis** |
 | :---: | :---: | :---: |
@@ -125,6 +129,7 @@ Všetky testy sa nachádzajú v súbore: cartctl_test.py.
 | 4  | `testOnCapacity`  | test na maximálnu kapacitu |
 
 <h3>Popis k testom k tabuľke kombinácie dvojíc charakteristiky:</h3>
+V tabuľke sa nachádzajú názvy jednotlivých testov.
 Testy 4 a 6 boli spojené do jedného testu a to z dôvodu veľmi malého počtu odlišností medzi sebou.
 
 | **Testy**  | **názov metódy**  |
