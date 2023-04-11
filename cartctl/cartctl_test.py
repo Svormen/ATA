@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Author: Slavomir Svorada
+Author: Slavomir Svorada (xsvora02)
 Subject: ATA - 1. projektu LS 2022/23
 Date: 11.4.2023
 """
