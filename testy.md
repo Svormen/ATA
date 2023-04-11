@@ -139,7 +139,6 @@ Testy 4 a 6 boli spojené do jedného testu a to z dôvodu veľmi malého počtu
 | 3  | `test3`  |
 | 4  | `test4_6`  |
 | 5  | `test5`  |
-| 6  | `test4_6`  |
 | 7  | `test7`  |
 | 8  | `test8`  |
 | 9  | `test9`  |
